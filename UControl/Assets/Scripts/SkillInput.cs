@@ -16,28 +16,28 @@ public class SkillInput : MonoBehaviour
     {
         if (Input.GetButtonDown("Skill 1"))
         {
-            AnimateSkill();
+            AnimateSkill(1);
             ActivateHitbox(1, 5f);
         }
         if (Input.GetButtonDown("Skill 2"))
         {
-            AnimateSkill();
+            AnimateSkill(2);
             ActivateHitbox(2, 5f);
         }
         if (Input.GetButtonDown("Skill 3"))
         {
-            AnimateSkill();
-            ActivateHitbox(1, 5f);
+            AnimateSkill(3);
+            ActivateHitbox(3, 5f);
         }
         if (Input.GetButtonDown("Skill 4"))
         {
-            AnimateSkill();
-            ActivateHitbox(1, 5f);
+            AnimateSkill(4);
+            ActivateHitbox(4, 5f);
         }
         if (Input.GetButtonDown("Skill 5"))
         {
-            AnimateSkill();
-            ActivateHitbox(1, 5f);
+            AnimateSkill(5);
+            ActivateHitbox(5, 5f);
         }
     }
 
@@ -47,8 +47,9 @@ public class SkillInput : MonoBehaviour
         _hitBoxArray[hitBoxIndex].Duration = duration;
     }
 
-    private void AnimateSkill()
+    private void AnimateSkill(int attackNumber)
     {
-        _animator.SetTrigger("Attack");
+        //_animator.SetTrigger("Attack");
+        _animator.CrossFade("Attack " + attackNumber, 0f);
     }
 }
