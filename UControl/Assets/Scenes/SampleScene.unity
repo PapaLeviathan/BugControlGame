@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRenderer: {fileID: 2126192095}
-  _force: 5
+  _force: 200
   _playerColorOnActivate: {r: 0, g: 1, b: 0.9540148, a: 1}
-  _torque: 0
+  _torque: 200
 --- !u!60 &7053376
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3027,7 +3027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &673666076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037612909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 826e842a2e126ea45a707cf6bf57a50d, type: 3}
   m_Name: 
@@ -3399,7 +3399,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!212 &1037612914
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3496,7 +3496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRenderer: {fileID: 2126192095}
-  _force: 5
+  _force: 200
   _playerColorOnActivate: {r: 1, g: 0, b: 0, a: 1}
 --- !u!60 &1037777249
 PolygonCollider2D:
@@ -3831,7 +3831,6 @@ GameObject:
   - component: {fileID: 1434694971}
   - component: {fileID: 1434694973}
   - component: {fileID: 1434694974}
-  - component: {fileID: 1434694975}
   - component: {fileID: 1434694972}
   - component: {fileID: 1434694976}
   m_Layer: 0
@@ -3884,6 +3883,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 1889406895}
   _speed: 5
+  _animator: {fileID: 2126192096}
+  _spriteRenderer: {fileID: 2126192095}
 --- !u!50 &1434694974
 Rigidbody2D:
   serializedVersion: 4
@@ -3905,28 +3906,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!195 &1434694975
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434694970}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!61 &1434694976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4220,7 +4199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRenderer: {fileID: 2126192095}
-  _force: 5
+  _force: 200
   _playerColorOnActivate: {r: 0.013791084, g: 0, b: 1, a: 1}
 --- !u!60 &1796566390
 PolygonCollider2D:

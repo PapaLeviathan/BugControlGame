@@ -7,6 +7,6 @@ public class HitBox3 : HitBox
         Vector2 direction = other.gameObject.transform.position - transform.root.position;
         Vector2 forceAndDirection = new Vector2(direction.x + _force, direction.y + _force);
         
-        other.GetComponent<Rigidbody2D>().AddForce(forceAndDirection);
+        other.GetComponent<Rigidbody2D>().AddRelativeForce(forceAndDirection);
     }
 }
