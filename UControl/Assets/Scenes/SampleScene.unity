@@ -242,12 +242,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 54864696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55976a48072ae647ad6f434d5a56b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: e615cd02ae8342f5a9f3864f98eca708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
-  _spawnDelay: 0
-  _enemyTypeToSpawn: 
+  _spawnDelay: 1
+  _enemyTypeToSpawn: Blue Enemy
 --- !u!1 &110190882
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,7 +3183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &651600148
 Transform:
   m_ObjectHideFlags: 0
@@ -3208,10 +3207,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 651600147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55976a48072ae647ad6f434d5a56b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a2c241f805b4b20a1b00d4752fbdf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 1073455992204397085, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
   _spawnDelay: 1
   _enemyTypeToSpawn: Green Enemy
 --- !u!1 &673666075
@@ -3313,7 +3311,7 @@ Transform:
   - {fileID: 218970785}
   - {fileID: 1457008812}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803223798
 GameObject:
@@ -3447,12 +3445,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 921064986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55976a48072ae647ad6f434d5a56b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: d05e23a6b59c481a920a1b3fdf811b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
-  _spawnDelay: 0
-  _enemyTypeToSpawn: 
+  _spawnDelay: 1
+  _enemyTypeToSpawn: Sky Blue Enemy
 --- !u!1 &986320966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3459,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986320967}
+  - component: {fileID: 986320968}
+  - component: {fileID: 986320969}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -3486,8 +3485,35 @@ Transform:
   - {fileID: 921064987}
   - {fileID: 1052540581}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &986320968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986320966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d35604fa4d84578a66734fcaa010202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAXEnemyAmount: 5
+  CurrentEnemyAmount: 0
+--- !u!114 &986320969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986320966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55976a48072ae647ad6f434d5a56b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnDelay: 1
 --- !u!1 &999097901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,11 +3646,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!4 &1037612910 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-  m_PrefabInstance: {fileID: 1073455992391548272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037777246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,9 +3768,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pools:
-  - _tag: Green Enemy
-    _prefab: {fileID: 1073455992204397085, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-    _size: 10
+  - Tag: Green Enemy
+    Prefab: {fileID: 1073455992204397085, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
+    Size: 10
+    SpawnPoint: {fileID: 651600148}
+  - Tag: Red Enemy
+    Prefab: {fileID: 1073455992204397085, guid: 89174ce7e59fa6a439a908695453b3b2, type: 3}
+    Size: 10
+    SpawnPoint: {fileID: 1802509394}
+  - Tag: Blue Enemy
+    Prefab: {fileID: 1073455992204397085, guid: f2acd67e9e3457b4283cb8749a4031e8, type: 3}
+    Size: 10
+    SpawnPoint: {fileID: 54864697}
+  - Tag: Sky Blue Enemy
+    Prefab: {fileID: 1073455992204397085, guid: 3065685e93cd740459c1d64415e2bda0, type: 3}
+    Size: 10
+    SpawnPoint: {fileID: 921064987}
+  _table: 1c0000001a0000001900000015000000
+  _total: 0
+  _randomNumber: 0
 --- !u!1 &1180230706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,12 +4547,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802509393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55976a48072ae647ad6f434d5a56b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 908a1384ebc641efa7ba9300a81b2b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
-  _spawnDelay: 0
-  _enemyTypeToSpawn: 
+  _spawnDelay: 1
+  _enemyTypeToSpawn: Red Enemy
 --- !u!1 &1844646064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,37 +4681,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1932205689
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1932205690}
-  m_Layer: 0
-  m_Name: Rocket
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1932205690
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932205689}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: -1.37, z: -0.11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1037612910}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951590951
 GameObject:
@@ -5139,60 +5144,3 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!1001 &1073455992391548272
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1932205690}
-    m_Modifications:
-    - target: {fileID: 1073455992204397085, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_Name
-      value: Square Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073455992204397086, guid: f80f91be095a1ab429f4e95e70190918, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f80f91be095a1ab429f4e95e70190918, type: 3}

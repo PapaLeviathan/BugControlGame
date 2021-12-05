@@ -1,29 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
-    [SerializeField] private float _spawnDelay;
-    [SerializeField] private string _enemyTypeToSpawn = "Green Enemy";
-    private int _amountToSpawn;
+    [SerializeField] protected float _spawnDelay;
 
-    private WaitForSeconds _delay;
+    protected WaitForSeconds _delay;
+    protected bool _canSpawnEnemies = true;
 
-    void Start()
+    protected IEnumerator _spawnEnemies;
+
+    #region Singleton
+
+    public static EnemySpawner Instance;
+
+    private void Awake()
     {
-        _delay = new WaitForSeconds(_spawnDelay);
-        StartCoroutine(SpawnEnemmies());
+        Instance = this;
     }
 
-    private IEnumerator SpawnEnemmies()
+    #endregion
+
+    IEnumerator Start()
     {
-        while (_amountToSpawn < 10)
+        _delay = new WaitForSeconds(_spawnDelay);
+
+        _spawnEnemies = SpawnEnemies();
+
+        yield return new WaitForSeconds(.5f);
+        
+        StartCoroutine(_spawnEnemies);
+    }
+
+
+    protected virtual IEnumerator SpawnEnemies()
+    {
+        while (_canSpawnEnemies)
         {
-            ObjectPooler.Instance.SpawnFromPool(_enemyTypeToSpawn, transform.position, Quaternion.identity);
-            _amountToSpawn++;
+            if (SpawnerManager.Instance.CurrentEnemyAmount >= SpawnerManager.Instance.MAXEnemyAmount)
+                Debug.Log("Cannot spawn, too many enemies");
+
             yield return _delay;
+
+            yield return new WaitUntil(() =>
+                SpawnerManager.Instance.CurrentEnemyAmount < SpawnerManager.Instance.MAXEnemyAmount);
+
+
+            ObjectPooler.Instance.SpawnFromRandomPool(transform.position, Quaternion.identity);
         }
     }
 }
