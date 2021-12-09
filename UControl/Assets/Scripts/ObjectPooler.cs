@@ -79,14 +79,11 @@ public class ObjectPooler : MonoBehaviour
     {
         _randomNumber = UnityEngine.Random.Range(0, _total);
         
-        Debug.Log("Initial random number is " + _randomNumber);
-
         for (int i = 0; i < _table.Length; i++)
         {
             if (_randomNumber <= _table[i])
             {
                 //select enemy
-                Debug.Log("Selected: " + _pools[i].Tag + ". ");
                 _currentSpawnPoint = _pools[i].SpawnPoint;
                 return _pools[i].Tag;
             }
@@ -97,6 +94,34 @@ public class ObjectPooler : MonoBehaviour
         }
 
         return null;
+    }
+    
+    public GameObject SpawnFromRandomPool(Quaternion rotation)
+    {
+        var tag = SelectRandomEnemyPool();
+        
+        if (!_poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
+            return null;
+        }
+
+        GameObject objectToSpawn = _poolDictionary[tag].Dequeue();
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = _currentSpawnPoint.position;
+        objectToSpawn.transform.rotation = rotation;
+        
+        _poolDictionary[tag].Enqueue(objectToSpawn);
+
+        InvokeEnemyAmountChanged();
+
+        return objectToSpawn;
+    }
+    
+    public void InvokeEnemyAmountChanged()
+    {
+        OnEnemyAmountChanged?.Invoke();
     }
     
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
@@ -117,32 +142,5 @@ public class ObjectPooler : MonoBehaviour
         InvokeEnemyAmountChanged();
 
         return objectToSpawn;
-    }
-
-    public GameObject SpawnFromRandomPool(Vector3 position, Quaternion rotation)
-    {
-        var tag = SelectRandomEnemyPool();
-        
-        if (!_poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
-            return null;
-        }
-
-        GameObject objectToSpawn = _poolDictionary[tag].Dequeue();
-        var variable = _poolDictionary[tag];
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = _currentSpawnPoint.position;
-        objectToSpawn.transform.rotation = rotation;
-        _poolDictionary[tag].Enqueue(objectToSpawn);
-
-        InvokeEnemyAmountChanged();
-
-        return objectToSpawn;
-    }
-    
-    public void InvokeEnemyAmountChanged()
-    {
-        OnEnemyAmountChanged?.Invoke();
     }
 }

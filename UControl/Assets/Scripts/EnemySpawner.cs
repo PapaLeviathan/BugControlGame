@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
                 SpawnerManager.Instance.CurrentEnemyAmount < SpawnerManager.Instance.MAXEnemyAmount);
 
 
-            ObjectPooler.Instance.SpawnFromRandomPool(transform.position, Quaternion.identity);
+            ObjectPooler.Instance.SpawnFromRandomPool(Quaternion.identity);
         }
     }
 }
